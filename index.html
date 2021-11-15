@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>SQL Grundlagen-Tutorial</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="SQL Grundlagen-Tutorial" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="SQL Grundlagen-Tutorial" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Autor: Jonathan Schuster   Kontakt: schuster.jonathan95@gmail.com" />
+
+
+<meta name="date" content="2021-11-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="">SQL Grundlagen-Tutorial </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path=""><a href="#vorwort"><i class="fa fa-check"></i>Vorwort</a></li>
+<li class="chapter" data-level="1" data-path=""><a href="#setup"><i class="fa fa-check"></i><b>1</b> Setup</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path=""><a href="#db-browser-for-sqlite-installation"><i class="fa fa-check"></i><b>1.1</b> DB Browser for SQLite Installation</a></li>
+<li class="chapter" data-level="1.2" data-path=""><a href="#stunes-database"><i class="fa fa-check"></i><b>1.2</b> sTunes Database</a></li>
+<li class="chapter" data-level="1.3" data-path=""><a href="#öffnen-der-datenbank"><i class="fa fa-check"></i><b>1.3</b> Öffnen der Datenbank</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path=""><a href="#datenbankstruktur"><i class="fa fa-check"></i><b>2</b> Datenbankstruktur</a></li>
+<li class="chapter" data-level="3" data-path=""><a href="#sql-abfragen"><i class="fa fa-check"></i><b>3</b> SQL-Abfragen</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path=""><a href="#select"><i class="fa fa-check"></i><b>3.1</b> SELECT</a></li>
+<li class="chapter" data-level="3.2" data-path=""><a href="#order-by"><i class="fa fa-check"></i><b>3.2</b> ORDER BY</a></li>
+<li class="chapter" data-level="3.3" data-path=""><a href="#limit"><i class="fa fa-check"></i><b>3.3</b> LIMIT</a></li>
+<li class="chapter" data-level="3.4" data-path=""><a href="#where"><i class="fa fa-check"></i><b>3.4</b> WHERE</a></li>
+<li class="chapter" data-level="3.5" data-path=""><a href="#nutzung-mehrerer-operatoren"><i class="fa fa-check"></i><b>3.5</b> Nutzung mehrerer Operatoren</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path=""><a href="#mehrere-tabellen-verbinden"><i class="fa fa-check"></i><b>4</b> Mehrere Tabellen verbinden</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path=""><a href="#entity-relationship-modell"><i class="fa fa-check"></i><b>4.1</b> Entity-Relationship-Modell</a></li>
+<li class="chapter" data-level="4.2" data-path=""><a href="#primary-foreign-keys"><i class="fa fa-check"></i><b>4.2</b> Primary &amp; Foreign Keys</a></li>
+<li class="chapter" data-level="4.3" data-path=""><a href="#inner-joins"><i class="fa fa-check"></i><b>4.3</b> Inner Joins</a></li>
+<li class="chapter" data-level="4.4" data-path=""><a href="#outer-joins"><i class="fa fa-check"></i><b>4.4</b> Outer Joins</a></li>
+<li class="chapter" data-level="4.5" data-path=""><a href="#nutzung-mehrerer-joins"><i class="fa fa-check"></i><b>4.5</b> Nutzung mehrerer Joins</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path=""><a href="#erweiterte-sql-abfragen"><i class="fa fa-check"></i><b>5</b> Erweiterte SQL-Abfragen</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path=""><a href="#aggregatfunktionen"><i class="fa fa-check"></i><b>5.1</b> Aggregatfunktionen</a></li>
+<li class="chapter" data-level="5.2" data-path=""><a href="#group-by"><i class="fa fa-check"></i><b>5.2</b> GROUP BY</a></li>
+<li class="chapter" data-level="5.3" data-path=""><a href="#case"><i class="fa fa-check"></i><b>5.3</b> CASE</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path=""><a href="#erstellung-von-datenbanken"><i class="fa fa-check"></i><b>6</b> Erstellung von Datenbanken</a></li>
+<li class="chapter" data-level="7" data-path=""><a href="#weitere-ressourcen"><i class="fa fa-check"></i><b>7</b> Weitere Ressourcen</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SQL Grundlagen-Tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">SQL Grundlagen-Tutorial</h1>
+<p class="author"><em>Autor: Jonathan Schuster <br> Kontakt: <a href="mailto:schuster.jonathan95@gmail.com" class="email">schuster.jonathan95@gmail.com</a></em></p>
+<p class="date"><em>2021-11-15</em></p>
+</div>
+<div id="vorwort" class="section level1 unnumbered">
+<h1>Vorwort</h1>
+<p>SQL (Structured Query Language) ist eine der meist genutzten Datenbanksprachen für relationale Datenbanken und findet sich in den unterschiedlichsten Branchen und Anwendungen wieder. Der Begriff relationale Datenbank beschreibt dabei eine Sammlung von Tabellen, die in Datensätzen abgespeichert werden und verknüpft werden können.</p>
+<p>In diesem Tutorial werden die grundlegenden SQL Befehle und Funktionen anhand einer fiktiven Datenbank erklärt. Um den Einstieg so einfach wie möglich zu machen, wird dabei der <a href="https://sqlitebrowser.org/">DB Browser for SQLite verwendet</a>.</p>
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wklq57lOlMc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</center>
+<p><br></p>
+<p>Folgende Ressourcen müssen wir uns für dieses Tutorial herunterladen:</p>
+<ul>
+<li><p><a href="https://sqlitebrowser.org/dl/">DB Browser for SQLite Download</a></p></li>
+<li><p><a href="https://1drv.ms/u/s!AqqMotwB6q520F8XRl_04VUv2-LD?e=FcftqB">sTunes Datenbank Download</a> (Passwort: IJKHannover)</p></li>
+</ul>
+<p>Eine Liste weiterer optionaler Ressourcen für den Einstieg in SQL befinden sich im letzten Kapitel.</p>
+
+</div>
+<div id="setup" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Setup</h1>
+<p>Im Folgenden werden wir uns zunächst einen Browser für <strong>SQLite</strong> und einen fiktiven Datensatz herunterladen. SQLite ist ein auf der Programmiersprache C beruhendes Datenbankmanagementsystem, das <strong>ohne Serveranbindung</strong> auf unserem Endsystem verwendet werden kann und uns daher ein wenig Aufwand erspart.</p>
+<p>Bei vielen anderen Anwendungsfällen von SQL werden jedoch Datenbanksysteme genutzt, die auf Server zurückgreifen und daher erst eine speziellere Konfiguration benötigen. Da mittlerweile viele verschiedene Unternehmen oder Open Source Communities solche Datenbanksysteme auf Basis von <strong>SQL Standards</strong> entwickelt haben, gibt es leichte Unterschiede in der Syntax. Die zugrunde liegende Logik und die Funktionen sind jedoch weitgehend deckungsgleich, sodass man mit Kenntnissen in einem Datenbanksystem problemlos auf andere SQL-Systeme umsteigen kann.</p>
+<p>Die am stärksten verbreiteten Datenbanksysteme umfassen:</p>
+<ul>
+<li>MySQL - Open Source von Oracle<br />
+</li>
+<li>SQL Server - von Microsoft<br />
+</li>
+<li>PostgreSQL - Open Source<br />
+</li>
+<li>Oracle Database - von Oracle</li>
+</ul>
+<div id="db-browser-for-sqlite-installation" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> DB Browser for SQLite Installation</h2>
+<p>Für einen einfachen Einstieg nutzen wir den kostenlosen <a href="https://sqlitebrowser.org/">DB Browser for SQLite</a>, der uns ohne großen Aufwand ermöglicht Datenbanken zu durchsuchen, Daten zu erstellen, Einträge zu bearbeiten, SQL Abfragen durchzuführen und Ergebnisse zu exportieren.</p>
+<p>Der kostenfreie Download für Windows, macOS und Linux befindet sich hier:</p>
+<ul>
+<li><a href="https://sqlitebrowser.org/dl/">DB Browser for SQLite Download</a></li>
+</ul>
+<p>Anschließend muss der Browser installiert werden.</p>
+</div>
+<div id="stunes-database" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> sTunes Database</h2>
+<p>Als praktisches Beispiel für diese Einführung dient uns die Datenbank eines fiktiven Onlinestores für Musik. Wir simulieren also ein Szenario, in dem wir als Analysten für dieses fiktive Unternehmen tätig sind und im Auftrag unserer Stakeholder (Management, Investoren, Kunden, …) beispielsweise Daten zu Alben, Artists, Kunden, Mitarbeitern, Genres, Umsätzen oder Bestelldetails sammeln und aufbereiten müssen. Wie genau diese Datenbank aufgebaut ist, werden wir uns noch anschauen.</p>
+<p>Zunächst können wir die Datenbank unter folgendem Link mit dem Passwort “IJKHannover”herunterladen:</p>
+<ul>
+<li><a href="https://1drv.ms/u/s!AqqMotwB6q520F8XRl_04VUv2-LD?e=FcftqB">sTunes Datenbank Download</a></li>
+</ul>
+<p>Die zip-Datei können wir nun entpacken und die Datenbank-Datei in einem neuen Ordner abspeichern, in dem wir auch unser Projekt anlegen.</p>
+</div>
+<div id="öffnen-der-datenbank" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Öffnen der Datenbank</h2>
+<p>Jetzt können wir den <strong>DB Browser for SQLite</strong> öffnen und uns mit dem Programm vertraut machen. Um unsere sTunes Datenbank zu öffnen, können wir auf <strong>Datenbank öffnen</strong> klicken und unsere <strong>sTunes.db</strong> Datei auswählen.</p>
+<center>
+<img src="img-SQL-DBBrowser1.png" height="500" />
+</center>
+
+</div>
+</div>
+<div id="datenbankstruktur" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Datenbankstruktur</h1>
+<p>Nun sehen wir unter dem Reiter <strong>Datenbankstruktur</strong> welche Tabellen und dementsprechend welche Daten unsere Datenbank erhält. Wir sehen, dass die Datenbank <strong>13 Tabellen</strong> enthält und können uns für jede Tabelle anschauen, welche Variablen unter welchem Namen gespeichert sind. So enthält unsere Tabelle <strong>albums</strong> die Variablen <strong>AlbumID</strong>, <strong>Title</strong> und <strong>ArtistID</strong>.</p>
+<p>Die Spalte <em>Typ</em> zeigt uns an, welches Format die Daten in der jeweiligen Tabellenspalte besitzen. Die Spalte <em>Schema</em> zeigt uns, über welche Befehle die jeweiligen Tabellen und Spalten erstellt worden sind.</p>
+<center>
+<img src="img-SQL-DBBrowser2.png" height="500" />
+</center>
+<p>Wir haben folglich also eine Übersicht zu allen Tabellen und ihren Variablen und können zum Beispiel folgende Rückschlüsse ziehen:</p>
+<ul>
+<li>Die Variable <strong>AlbumID</strong> in der Tabelle <strong>albums</strong> ist vom Typ <strong>INTEGER</strong>, also eine ganze Zahl.<br />
+</li>
+<li>Die Variable <strong>Title</strong> in der Tabelle <strong>albums</strong> ist vom Typ <strong>NVARCHAR</strong>, also eine Zeichenfolge mit variabler Länge und durch die Angabe <strong>(160)</strong> auf Maximal 160 Zeichen begrenzt.<br />
+</li>
+<li>Die Variable <strong>UnitPrice</strong> in der Tabelle <strong>invoice_items</strong> ist vom Typ <strong>NUMERIC</strong>, also eine Zahl und durch die Angabe <strong>(10,2)</strong> auf insgesamt 10 Stellen begrenzt, wobei 2 dieser Stellen Nachkommastellen sind.</li>
+</ul>
+<p>Eine Übersicht zu weiteren Datentypen ist hier zu finden:<br />
+<a href="https://www.tutorialspoint.com/sqlite/sqlite_data_types.htm">SQL Datatypes</a></p>
+<p>Um unsere Datenbankstruktur besser nachvollziehen zu können, ist im Downloadordner der Datenbank ein sogenanntes Datenbankschema hinterlegt:</p>
+<center>
+<img src="img-sTunes-Schema.png" width="1000" />
+</center>
+
+</div>
+<div id="sql-abfragen" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> SQL-Abfragen</h1>
+<p>Nachdem wir uns einen Überblick über die Datenbankstruktur verschafft haben, können wir damit anfangen, Informationen aus unserer Datenbank abzufragen. Dazu müssen wir in unserem DB Browser auf den Reiter <strong>SQL ausführen</strong> wechseln und können dann unsere Befehle in das Fenster schreiben. Durch den Play-Button lassen sich diese dann ausführen.
+<br></p>
+<center>
+<img src="img-SELECT1.png" width="1000" />
+</center>
+<p><br></p>
+<div id="select" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> SELECT</h2>
+<p>Um Daten abzufragen, können wir das sogenannte <strong>SELECT Statement</strong> verwenden. Durch den folgenden Befehl können wir alle Einträge mit allen Spalten aus der Tabelle <strong>artists</strong> ausgeben lassen.</p>
+<pre><code>SELECT
+  *
+FROM
+  artists;</code></pre>
+<center>
+<img src="img-SELECT2.png" width="1000" />
+</center>
+<p><br>
+Durch das Sternchen haben wir alle Variablen ausgewählt. Möchten wir genauer festlegen, welche Variablen wir abfragen möchten, können wir dies zwischen <strong>SELECT</strong> und <strong>FROM</strong> definieren:</p>
+<pre><code>SELECT
+  Name
+FROM
+  artists;</code></pre>
+<center>
+<img src="img-SELECT3.png" width="1000" />
+</center>
+<p><br>
+Dabei können wir beliebig viele Variablen wählen, indem wir sie durch ein Komma trennen. Nur bei der letzten Variable darf <strong>kein Komma</strong> stehen:</p>
+<pre><code>SELECT
+  FirstName,
+  LastName,
+  Email
+FROM
+  customers;</code></pre>
+<center>
+<img src="img-SELECT4.png" width="1000" />
+</center>
+<p><br>
+Um die Namen der Spalten in unserer <strong>Ausgabe</strong> zu verändern, können wir die ausgewählten Variablen in unserem SELECT Statement neu betiteln. Dabei reicht es bei <strong>einzelnen Worten</strong>, den neuen Titel hinter die Zuordnung <strong>AS</strong> zu schreiben, während <strong>mehrere getrennte Worte</strong> wie im folgenden Beispiel durch <strong>’’ oder [ ]</strong> umschlossen werden müssen:</p>
+<pre><code>SELECT
+  FirstName AS Vorname,
+  LastName AS Nachname,
+  Email AS &#39;Aktuelle Emailadresse&#39;,
+  City AS [Aktueller Wohnort]
+FROM
+  customers;</code></pre>
+<center>
+<img src="img-SELECT5.png" width="1000" />
+</center>
+</div>
+<div id="order-by" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> ORDER BY</h2>
+<p>Um unsere Ergebnisse nun auch zu soriteren, können wir den Befehl <strong>ORDER BY</strong> verwenden, die entsprechende Variable wählen und zwischen <strong>ASC</strong> für ascending (aufsteigend) und <strong>DESC</strong> für descending (absteigend) wählen. Verzichten wir auf die Angabe von <strong>ASC</strong> und <strong>DESC</strong>, wird immer <strong>ASC</strong> ausgewählt. Zur besseren Lesbarkeit empfiehlt es sich dennoch die Angabe zu definieren.</p>
+<pre><code>SELECT
+  FirstName AS Vorname,
+  LastName AS Nachname,
+  Email AS &#39;Aktuelle Emailadresse&#39;,
+  City AS [Aktueller Wohnort]
+FROM
+  customers
+ ORDER BY
+    FirstName ASC;</code></pre>
+</div>
+<div id="limit" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> LIMIT</h2>
+<p>Möchten wir die Ausgabe nun auch auf eine bestimmte Anzahl von Ergebnissen beschränken, können wir dies mit dem Befehl <strong>LIMIT</strong> tun:</p>
+<pre><code>SELECT
+  FirstName AS Vorname,
+  LastName AS Nachname,
+  Email AS &#39;Aktuelle Emailadresse&#39;,
+  City AS [Aktueller Wohnort]
+FROM
+  customers
+ ORDER BY
+    FirstName ASC
+LIMIT 3;</code></pre>
+<center>
+<img src="img-SELECT6.png" width="1000" />
+</center>
+</div>
+<div id="where" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> WHERE</h2>
+<p>Um Daten genauer filtern zu können und bestimmte Informationen ausfindig zu machen, können wir den Befehl <strong>WHERE</strong> und verschiedene Operatoren nutzen.</p>
+<p>Zu den wichtigsten Operatoren zählen:</p>
+<p>Vergleiche:<br />
+<strong>= gleich</strong><br />
+<strong>&gt; größer als</strong><br />
+<strong>&lt; kleiner als</strong><br />
+<strong>&gt;= größer oder gleich</strong><br />
+<strong>&lt;= kleiner oder gleich</strong><br />
+<strong>&lt;&gt; ungleich</strong></p>
+<p>und Logische Operatoren:<br />
+<strong>BETWEEN</strong><br />
+<strong>IN</strong><br />
+<strong>LIKE</strong><br />
+<strong>AND</strong><br />
+<strong>OR</strong></p>
+<p>Möchten wir zum Beispiel wissen, welche Rechnungen aus unserer <strong>invoices</strong> Tabelle einen <strong>Gesamtbetrag von genau 1.98$ (Total = 1.98)</strong> aufweisen, wann die Bestellungen getätigt worden sind (InvoiceDate), aus welcher Stadt (BillingCity) und mit welcher Rechnungsadresse (BillingAddress), können wir folgenden Befehl ausführen:</p>
+<pre><code>SELECT
+    InvoiceDate AS Bestelldatum,
+    BillingAddress AS Rechnungsadresse,
+    BillingCity AS Stadt,
+    Total AS Betrag
+FROM
+    invoices
+WHERE
+    Total = 1.98
+ORDER BY
+    InvoiceDate;</code></pre>
+<center>
+<img src="img-WHERE1.png" width="1000" />
+</center>
+<p><br>
+Ebenso können wir mit dem <strong>BETWEEN</strong> Operator herausfinden, welche Rechnungen einen Gesamtbetrag <strong>zwischen</strong> 1.98 und 5.00 aufweisen:</p>
+<pre><code>SELECT
+    InvoiceDate AS Bestelldatum,
+    BillingAddress AS Rechnungsadresse,
+    BillingCity AS Stadt,
+    Total AS Betrag
+FROM
+    invoices
+WHERE
+    Total BETWEEN 1.98 AND 5.00
+ORDER BY
+    InvoiceDate;</code></pre>
+<center>
+<img src="img-WHERE2.png" width="1000" />
+</center>
+<p><br>
+Um nach <strong>Text-Daten</strong> zu filtern, müssen wir den entsprechenden Text lediglich mit <strong>Anführungszeichen</strong> umschließen. So lassen sich wie folgt alle Bestellungen aus Stuttgart abrufen:</p>
+<pre><code>SELECT
+  InvoiceDate AS Bestelldatum,
+  BillingAddress AS Rechnungsadresse,
+  BillingCity AS Stadt,
+  Total AS Betrag
+FROM
+  invoices
+WHERE
+  BillingCity = &#39;Stuttgart&#39;
+ORDER BY
+  InvoiceDate;</code></pre>
+<p>Dabei können wir ganz gleich ob es sich um Zahlenwerte oder Text handelt auch mehrere Kriterien verwenden. Möchten wir z.B. alle Rechnungen aus Stuttgart mit einem Betrag von mehr al 5$, können wir die zweite Bedingung durch <strong>AND</strong> hinzufügen:</p>
+<pre><code>SELECT
+  InvoiceDate AS Bestelldatum,
+  BillingAddress AS Rechnungsadresse,
+  BillingCity AS Stadt,
+  Total AS Betrag
+FROM
+  invoices
+WHERE
+  BillingCity = &#39;Stuttgart&#39; AND Total &gt; 5
+ORDER BY
+  InvoiceDate;</code></pre>
+<center>
+<img src="img-WHERE3.png" width="1000" />
+</center>
+<p><br>
+Durch den Operator <strong>IN</strong> können wir zudem festlegen, dass mehrere Ausprägungen einer Variable in Betracht gezogen werden sollen. So lassen sich wie folgt alle Rechnungen aus Stuttgart oder Berlin abfragen. Wir erhalten praktisch alle Einträge, bei denen der Wert der Variable BillingCity <strong>in unserer Liste</strong> vorkommt.</p>
+<pre><code>SELECT
+  InvoiceDate AS Bestelldatum,
+  BillingAddress AS Rechnungsadresse,
+  BillingCity AS Stadt,
+  Total AS Betrag
+FROM
+  invoices
+WHERE
+  BillingCity IN (&#39;Stuttgart&#39;,&#39;Berlin&#39;)
+ORDER BY
+  InvoiceDate;</code></pre>
+<center>
+<img src="img-WHERE4.png" width="1000" />
+</center>
+<p><br>
+Wenn wir nach Ergebnissen suchen, die ein Kriterium nur teilweise erfüllen sollen, zum Beispiel alle Rechnungen von Städten, die mit “B” anfangen, können wir den Operator <strong>LIKE</strong> verwenden. Dabei ist durch ein <strong>%</strong>-Zeichen zu definieren, ob die Buchstaben vor, hinter oder sowohl vor als auch hinter dem gewünschten Inhalt beliebig sein können:</p>
+<p>Durch <strong>BillingCity LIKE ‘B%’</strong> erhalten wir alle Städte die mit B beginnen. (Brüssel, etc.)<br />
+Durch <strong>BillingCity LIKE ‘%T’</strong> erhalten wir alle Städte die auf T enden. (Frankfurt, etc.)<br />
+Durch <strong>BillingCity LIKE ‘%k%’</strong> erhalten wir alle Städte die ein K beinhalten. (Stockholm, etc.)<br />
+Durch <strong>BillingCity LIKE ‘O%O’</strong> erhalten wir alle Städte die mit O beginnen und enden. (Oslo, etc.)</p>
+<pre><code>SELECT
+  InvoiceDate AS Bestelldatum,
+  BillingAddress AS Rechnungsadresse,
+  BillingCity AS Stadt,
+  Total AS Betrag
+FROM
+  invoices
+WHERE
+  BillingCity LIKE &#39;%K%&#39;
+ORDER BY
+  InvoiceDate;</code></pre>
+<center>
+<img src="img-WHERE8.png" width="1000" />
+</center>
+<p><br></p>
+<p>Nützlich wird dies vor allem in Situationen, in denen wir vielleicht nicht wissen wie genau die <strong>Eingabe der Daten</strong> erfolgt ist oder wir nach kurzen Inhalten in <strong>langen Texten</strong> filtern möchten. Suchen wir beispielsweise alle Rechnungen mit der Adresse <em>“Berger Straße”</em> und wissen dabei nicht, ob das Wort <em>Straße</em> in der Eingabe ausgeschrieben oder gekürzt wurde und um welche Hausnummer es sich handelt, können wir mit der folgenden Abfrage alle Einträge erhalten, in denen das Wort <em>Berger</em> in der Rechnungsadresse vorgekommen ist:</p>
+<pre><code>SELECT
+  InvoiceDate AS Bestelldatum,
+  BillingAddress AS Rechnungsadresse,
+  BillingCity AS Stadt,
+  Total AS Betrag
+FROM
+  invoices
+WHERE
+  BillingAddress LIKE &#39;%Berger%&#39;
+ORDER BY
+  InvoiceDate;</code></pre>
+<center>
+<img src="img-WHERE5.png" width="1000" />
+</center>
+<p><br></p>
+</div>
+<div id="nutzung-mehrerer-operatoren" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Nutzung mehrerer Operatoren</h2>
+<p>In der Realität werden diese Filter meist komplexer und verwenden mehrere Operatoren wie <strong>AND</strong> und <strong>OR</strong> zugleich. Dabei gilt es bestimmte Reihenfolgen und Regeln zu beachten, um nicht das falsche Ergebnis zu erhalten. Ohne die Verwendung von Klammern werden die Bedingungen auf beiden Seiten des <strong>AND</strong> automatisch zusammengefasst. Dies entspricht jedoch nicht immer unserem Vorhaben.</p>
+<p>Möchten wir beispielsweise eine Liste aller Rechnungen mit einem <strong>Betrag über 1.50$</strong> aus Städten die entweder <strong>mit D oder P beginnen</strong>, könnten wir die Bedingung <em>Total &gt; 1.50</em> über <strong>AND</strong> mit <em>BillingCity Like ‘p%’ OR BillingCity Like ‘d%’</em> verbinden. Ohne Klammern erhalten wir jedoch das folgende Ergebnis:</p>
+<pre><code>SELECT
+  InvoiceDate AS Bestelldatum,
+  BillingAddress AS Rechnungsadresse,
+  BillingCity AS Stadt,
+  Total AS Betrag
+FROM
+  invoices
+WHERE
+  Total &gt; 1.50 AND BillingCity LIKE &#39;p%&#39; OR BillingCity LIKE &#39;d%&#39;
+ORDER BY
+  Total;</code></pre>
+<center>
+<img src="img-WHERE6.png" width="1000" />
+</center>
+<p><br></p>
+<p>Wie wir an den ersten beiden Einträgen mit Betrag unter 1.50$ sehen können, hat SQL unseren Befehl anders verstanden, als wir es uns gewünscht haben. Die beiden Kriterien vor dem <strong>OR</strong> wurden zusammengefasst, während alles nach dem <strong>OR</strong> einzeln und damit ohne Rücksicht auf den Betrag betrachtet wurde.
+Wir haben also alle Einträge erhalten, die entweder der Bedingung “<strong>größer als 1.50$ und aus Stadt mit p am Anfang</strong>” oder der Bedingung “<strong>Stadt mit d am Anfang</strong>” entsprechen.</p>
+<p>Um das korrekte Ergebnis zu erhalten, müssen wir Klammern so setzen, dass alle Bedingungen korrekt interpretiert werden, also so, dass zunächst alle Rechnungen mit den gewünschten Beträgen gesucht und erst anschließend die weiteren Bedingungen angewendet werden.</p>
+<pre><code>SELECT
+  InvoiceDate AS Bestelldatum,
+  BillingAddress AS Rechnungsadresse,
+  BillingCity AS Stadt,
+  Total AS Betrag
+FROM
+  invoices
+WHERE
+  Total &gt; 1.50 AND (BillingCity LIKE &#39;p%&#39; OR BillingCity LIKE &#39;d%&#39;)
+ORDER BY
+  Total;</code></pre>
+<center>
+<img src="img-WHERE7.png" width="1000" />
+</center>
+
+</div>
+</div>
+<div id="mehrere-tabellen-verbinden" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Mehrere Tabellen verbinden</h1>
+<p>Eine der wichtigsten Eigenschaften von SQL ist die Fähigkeit Daten aus mehreren Tabellen zusammen zu verarbeiten. Wie wir in unserem <strong>Datenbank-Schema</strong> und dem Reiter <strong>Datenbankstruktur</strong> bereits festgestellt haben, befinden sich 13 Tabellen in unserer Datenbank. Diese können wir, wie in den folgenden Abschnitten genauer erläutert wird, über die <strong>PRIMARY</strong> und <strong>FOREIGN KEYS</strong> verknüpfen.</p>
+<div id="entity-relationship-modell" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Entity-Relationship-Modell</h2>
+<p>Um das Schema der Datenbankstruktur zu veranschaulichen, habe ich die Tabellen mit ihren Variablen und den Beziehungen als sogenanntes <em>Entity-Relationship-Modell</em>, kurz <em>ERM</em> dargestellt. Dieses Modell hilft uns dabei, die Beziehungen der einzelnen Tabellen und ihrer Variablen zu veranschaulichen. Das Schema ist in unserem Downloadlink der Datenbank zu finden:</p>
+<center>
+<img src="img-sTunes-Schema.png" width="1000" />
+</center>
+<p>Wir sehen hier, welche Tabellen in unserer Datenbank vorhanden sind, welche Variablen diese besitzen und wie diese Tabellen zueinander in Beziehung stehen.</p>
+</div>
+<div id="primary-foreign-keys" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Primary &amp; Foreign Keys</h2>
+<p>Wir stellen fest, dass einige Variablen - in jeder Tabelle mindestens eine - mit einem Schlüsselsymbol versehen sind. Dieses Symbol zeigt uns, dass diese Variablen der sogenannte <strong>PRIMARY KEY</strong> in der jeweiligen Tabelle sind und als eindeutige Kennung (unique identifier) für die einzelnen Einträge in der Tabelle gelten.</p>
+<p>So wissen wir beispielsweise, dass jedes einzelne Album in der Tabelle <strong>albums</strong>, also jeder einzelne Eintrag, eine eindeutige <strong>AlbumId</strong> besitzt, über die das jeweilige Album identifiziert werden kann. Welche Variable als <strong>PRIMARY KEY</strong> dient, wird bei der Erstellung einer jeden Tabelle festgelegt. Ohne die Grafik würden wir die Info zu den Keys in unserer Übersicht zur Datenbankstruktur in der Spalte <em>Schema</em> durch Hinweise wie <em>[AlbumId] INTEGER PRIMARY KEY</em> finden. Wie wir anhand der Tabelle <strong>playlist_track</strong> feststellen können, ist es auch möglich mehrere PRIMARY KEYS in einer Tabelle zu nutzen.</p>
+<p>Folgen wir den Verbindungen der PRIMARY KEYS, sehen wir, dass diese auch mit Variablen anderer Tabellen in Beziehung stehen, den sogenannten FOREIGN KEYS.</p>
+<p>Ein <strong>FOREIGN KEY</strong> einer Tabelle ist eine Variable, die in einer anderen Tabelle als PRIMARY KEY verwendet wird. Diese Zuteilung ermöglicht es uns, die Daten aus verschiedenen Tabellen miteinander zu verbinden und auszuwerten.</p>
+<p>Wir sehen beispielsweise, dass der PRIMARY KEY <strong>ArtistID</strong> in der Tabelle <strong>artists</strong> ebenso in der Tabelle <strong>albums</strong> als FOREIGN KEY vorkommt. Durch diese Verknüpfung ist es beispielsweise möglich, den Namen aus der <strong>artists</strong> Tabelle an die Daten der <strong>albums</strong> Tabelle zu hängen, um eine Übersicht zu allen Alben und ihren Künstlern zu erstellen.</p>
+<p>Die <strong>Zahl 1</strong> und das <strong>Unendlichkeitszeichen</strong> an den Verbindungen der Keys weisen zudem auf die Art der Beziehung hin. Während jeder Artist in der <strong>artists</strong> Tabelle nur einmal vorkommt und eine eindeutige <strong>ArtistId</strong> erhält, um Dopplungen zu vermeiden, kann diese <strong>ArtistId</strong> logischerweise bei unendlich vielen Alben vorkommen. Hat eine Künstlerin vier Alben gemacht, werden in der <strong>albums</strong> Tabelle vier Einträge mit eindeutigen <strong>AlbumIds</strong> vorkommen, die jedoch alle die selbe <strong>ArtistId</strong> verwenden.</p>
+<center>
+<img src="img-sTunes-Schema2.png" width="1000" />
+</center>
+<p>Zu beachten ist außerdem, dass ein PRIMARY KEY in einer Tabelle auch mit einem FOREIGN KEY mit anderem Namen in einer anderen Tabelle verbunden sein kann. So tritt der PRIMARY KEY <strong>EmployeeId</strong> der <strong>employees</strong> Tabelle als FOREIGN KEY mit dem Namen <strong>SupportRepId</strong> in der <strong>customers</strong> Tabelle auf. Während wir in der Personaltabelle vielleicht von Personalnummer sprechen, kann die gleiche Nummer in der Kundentabelle beispielsweise als Nummer der Betreuungsperson betitelt werden.</p>
+</div>
+<div id="inner-joins" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Inner Joins</h2>
+<p>Wie wir in unserem Datenbank-Schema feststellen konnten, besteht unsere Tabelle <strong>albums</strong> aus den Variablen <strong>AlbumId</strong>, <strong>Title</strong> und <strong>ArtistId</strong>. Möchten wir nun zu dem Albumtiteln auch Namen der Interpreten sehen, ist dies ohne die <strong>artists</strong> Tabelle nicht möglich.</p>
+<p>Da die Variable <strong>ArtistId</strong> in der <strong>albums</strong> Tabelle jedoch als <strong>FOREIGN KEY</strong> mit dem <strong>PRIMARY KEY</strong> <strong>ArtistId</strong> in der <strong>artists</strong> Tabelle übereinstimmt, können wir sie mit der folgenden Abfrage verbinden:</p>
+<p>Wir verbinden die beiden Tabellen <strong>albums</strong> und <strong>artists</strong> bei allen Einträgen, bei denen die ArtistId in der Albums-Tabelle der ArtistId in der Artists-Tabelle entspricht.</p>
+<pre><code>SELECT
+    *
+FROM
+    albums
+INNER JOIN
+    artists
+ON
+    albums.ArtistId = artists.ArtistId;</code></pre>
+<center>
+<img src="img-JOIN1.png" width="1000" />
+</center>
+<p><br>
+Dabei können wir den Code einfacher und übersichtlicher darstellen, indem wir den beiden Tabellen innerhalb der Abfrage ein <strong>Alias</strong> geben. So müssen wir die Tabellennamen im Befehl nicht erneut ausschreiben:</p>
+<pre><code>SELECT
+    *
+FROM
+    albums AS a
+INNER JOIN
+    artists AS n
+ON
+    a.ArtistId = n.ArtistId;</code></pre>
+<center>
+<img src="img-JOIN1.png" width="1000" />
+</center>
+<p><br>
+Wenn wir nun die Auswahl der Variablen eingrenzen, können wir dies ebenfalls mit dem Alias machen, selbst wenn dieser erst in den darauf folgenden Zeilen definiert wird:</p>
+<pre><code>SELECT
+    a.Title,
+    n.Name
+FROM
+    albums AS a
+INNER JOIN
+    artists AS n
+ON
+    a.ArtistId = n.ArtistId;</code></pre>
+<center>
+<img src="img-JOIN2.png" width="1000" />
+</center>
+<p><br>
+Zu beachten ist, dass <strong>INNER JOINS</strong> ausschließlich <strong>übereinstimmende Einträge</strong> wiedergeben.</p>
+<p>In unserem Beispiel passt es logischerweise, dass alle Alben jemandem zugeordnet werden können. Gibt es jedoch für einen Eintrag keine Übereinstimmung, wird dieser Eintrag bei einem <strong>INNER JOIN</strong> fallen gelassen. Durch unsere Abfrage erhielten wir alle Alben und die zum Album gehörenden Artists, da jedoch nicht von allen Artists ein Album in unserem Store ist, wurden einige Artists bei dieser Abfrage ausgeschlossen - wie wir gleich sehen werden.</p>
+</div>
+<div id="outer-joins" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Outer Joins</h2>
+<p><strong>Outer Joins</strong> geben <strong>eine Tabelle vollständig</strong> wieder und fügen die übereinstimmende Einträge einer anderen Tabelle der ersten hinzu. Man unterscheidet dabei zwischen sogenannten <strong>LEFT OUTER JOINS</strong> und <strong>RIGHT OUTER JOINS</strong>.</p>
+<p>Bei <strong>LEFT OUTER JOINS</strong> werden sozusagen allen Einträgen der “linken Tabelle” die passenden Einträge der “rechten Tabelle” hinzugefügt und alle Einträge ohne Übereinstimmung erhalten für die Variablen der rechten Tabelle Null-Werte.</p>
+<p>Für <strong>RIGHT OUTER JOINS</strong> gilt dies auch, nur in umgekehrter Reihenfolge. Diese werden in SQLite nicht unterstützt, lassen sich aber logischerweise durch einen <strong>LEFT OUTER JOIN</strong> und Tauschen der Seiten der Tabellen replizieren.</p>
+<p>Nehmen wir erneut das Beispiel mit den Alben und Artists. Möchten wir unsere <strong>artists</strong> Tabelle um Albuminformationen erweitern, auch wenn nicht alle Artists ein Album in unserem Store aufweisen, können wir den <strong>LEFT OUTER JOIN</strong> nutzen. Dabei nehmen wir die artists Tabelle auf die linke und die albums Tabelle auf die rechte Seite.</p>
+<pre><code>SELECT
+    n.Name AS &#39;Artist-Name&#39;,
+    a.Title AS &#39;Album-Titel&#39;
+FROM
+    artists AS n
+LEFT OUTER JOIN
+    albums AS a
+ON
+    n.ArtistId = a.ArtistId;</code></pre>
+Scrollen wir jetzt ein wenig durch die Ergebnisse, sehen wir zum einen, dass wir für Künstler mit mehreren Alben auch mehrere Einträge haben, gleichzeitig jedoch immernoch alle Künstler ohne Album vorhanden sind. Überall, <strong>wo keine Übereinstimmung mit der albums Tabelle gefunden worden ist, wurden Null-Werte hinzugefügt</strong>:
+<center>
+<img src="img-JOIN3.png" width="1000" />
+</center>
+<p><br></p>
+</div>
+<div id="nutzung-mehrerer-joins" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Nutzung mehrerer Joins</h2>
+<p>Bei Betrachtung unseres Datenbank-Schemas zeigt sich, dass sich noch mehr als nur zwei Tabellen miteinander verknüpfen lassen. Möchten wir beispielsweise wissen, welche Songs in einer Playlist vorkommen und wie Song und Playlist jeweils heißen, müssen wir die Tabellen <strong>playlists</strong>, <strong>playlist_track</strong> und <strong>tracks</strong> verbinden.</p>
+<center>
+<img src="img-sTunes-Schema3.png" width="1100" />
+</center>
+<p><br></p>
+<p>Durch einen <strong>INNER JOIN</strong> zwischen der <strong>PlaylistId</strong> in der Tabelle <strong>playlists</strong> und der <strong>PlaylistID</strong> in der Tabelle <strong>playlist_track</strong> können wir zunächst alle Track-IDs, die in den jeweiligen Playlists vorkommen, ausfindig machen.</p>
+<p>Anschließend können wir diese <strong>TrackID</strong> aus der Tabelle <strong>playlist_track</strong> für einen weiteren <strong>INNER JOIN</strong> nutzen, um über die <strong>TrackId</strong> in der Tabelle <strong>tracks</strong> an die Variable <strong>Name</strong> des Tracks heranzukommen. Wir können also auf einen Join den nächsten folgen lassen:</p>
+<pre><code>SELECT
+    p.name AS Playlistname,
+    p.PlaylistId,
+    t.TrackId,
+    t.name AS Songname,
+    t.Composer
+FROM
+    playlists AS p
+INNER JOIN
+    playlist_track AS pt
+ON
+    p.PlaylistId = pt.PlaylistId
+INNER JOIN
+    tracks AS t
+ON 
+    pt.TrackId = t.TrackId
+ORDER BY
+    p.PlaylistId DESC;</code></pre>
+<center>
+<img src="img-JOIN4.png" width="1000" />
+</center>
+<p><br></p>
+<p>So können wir nun sehen, welche Songs von welchen Künstlern in welcher Playlist vorkommen.</p>
+
+</div>
+</div>
+<div id="erweiterte-sql-abfragen" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Erweiterte SQL-Abfragen</h1>
+<p>In der Praxis wird man uns natürlich nicht nur damit beauftragen, bestimmte Einträge aus der Datenbank zu ziehen, sondern diese auch auszuwerten, gesondert aufzubereiten und zum Beispiel für das Management relevante Schlussfolgerungen anzustellen. Als abschließenden Ausblick, schauen wir uns nun ein paar erweiterte SQL-Abfragen in Kurzform an.</p>
+<div id="aggregatfunktionen" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Aggregatfunktionen</h2>
+<p>Ein wichtiges Element in der Arbeit mit Datenbanken sind Aggregatfunktion, also Funktionen mit denen wir Daten zusammenfassen oder mathematische Berechnungen anstellen können. Die folgenden fünf grundlegenden Aggregatfunktionen sind dabei nur ein kleiner Teil der in SQL verwendbaren Funktionen:</p>
+<ul>
+<li><strong>AVG()</strong><br />
+</li>
+<li><strong>COUNT()</strong><br />
+</li>
+<li><strong>MAX()</strong><br />
+</li>
+<li><strong>MIN()</strong><br />
+</li>
+<li><strong>SUM()</strong></li>
+</ul>
+<p>Angewendet werden diese Funktionen wie folgt:</p>
+<pre><code>SELECT
+    SUM(Total) AS Summe,
+    AVG(Total) AS Durchschnittsbetrag,
+    MAX(Total) AS &#39;Höchster Betrag&#39;,
+    MIN(Total) AS &#39;Geringster Betrag&#39;,
+    COUNT(*) AS &#39;Anzahl der Belege&#39;
+FROM
+    invoices;</code></pre>
+<center>
+<img src="img-FUNC1.png" width="1000" />
+</center>
+<p><br></p>
+<p><strong>COUNT()</strong> beachtet dabei nur Werte die nicht Null sind. In unserem Beispiel haben wir jedoch mit dem * in der Klammer alle Null und Error-Werte mitgezählt.</p>
+<p>Wie wir anhand des Durchschnittsbetrags sehen können, hat SQL das Ergebnis nicht gerundet. Zum Runden können wir die Funktion <strong>ROUND(X,Y)</strong> verwenden, wobei X für den Wert der gerundet werden soll und Y für die Anzahl der Nachkommastellen steht.</p>
+<pre><code>SELECT
+    SUM(Total) AS Summe,
+    AVG(Total) AS Durchschnittsbetrag,
+    ROUND(AVG(Total), 2) AS &#39;Gerundeter Durchschnittsbetrag&#39;,
+    MAX(Total) AS &#39;Höchster Betrag&#39;,
+    MIN(Total) AS &#39;Geringster Betrag&#39;,
+    COUNT(*) AS &#39;Anzahl der Belege&#39;
+FROM
+    invoices;</code></pre>
+<center>
+<img src="img-FUNC2.png" width="1000" />
+</center>
+<p><br></p>
+</div>
+<div id="group-by" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> GROUP BY</h2>
+<p>In den meisten Fällen werden wir jedoch nicht einfach nach dem Durchschnittswert der gesamten Tabelle, sondern eher nach dem Durchschnitt in bestimmten Kategorien oder Gruppen gefragt.</p>
+<p>Um Werte für bestimmte Gruppen berechnen zu können, lässt sich der Befehl <strong>GROUP BY</strong> verwenden. So können wir wie im folgenden Beispiel die Durchschnittsbeträge der Rechnungen je nach Stadt darstellen:</p>
+<pre><code>SELECT
+    BillingCity AS Standort,
+    AVG(Total) AS &#39;Durchschnittlicher Rechnungsbetrag&#39;
+FROM
+    invoices
+GROUP BY
+    BillingCity;</code></pre>
+<center>
+<img src="img-FUNC3.png" width="1000" />
+</center>
+<p><br></p>
+<p>Möchten wir dabei wie in den vorherigen Kapiteln nach bestimmten Eigenschaften filtern, können wir auch hier den Befehl <strong>WHERE</strong> einsetzen. So können wir uns wie folgt die Durchschnittsbeträge für alle Städte mit F als Anfangsbuchstaben ausgeben lassen:</p>
+<pre><code>SELECT
+    BillingCity AS Standort,
+    AVG(Total) AS &#39;Durchschnittlicher Rechnungsbetrag&#39;
+FROM
+    invoices
+WHERE
+    BillingCity LIKE &#39;F%&#39;
+GROUP BY
+    BillingCity;</code></pre>
+<center>
+<img src="img-FUNC4.png" width="1000" />
+</center>
+<p><br>
+Sollten wir jedoch nach dem Ergebnis unserer Aggregatfunktion filtern wollen, können wir <strong>WHERE</strong> nicht verwenden. Möchten wir z.B. nur Städte sehen, dessen Durchschnittsbetrag größer als 6 ist und definieren dies wie folgt durch <strong>WHERE</strong>, erhalten wir eine Fehlermeldung:</p>
+<pre><code>SELECT
+    BillingCity AS Standort,
+    AVG(Total) AS &#39;Durchschnittlicher Rechnungsbetrag&#39;
+FROM
+    invoices
+WHERE
+    AVG(Total) &gt; 6
+GROUP BY
+    BillingCity;</code></pre>
+<center>
+<img src="img-FUNC5.png" width="1000" />
+</center>
+<p><br></p>
+<p>Um nach dem Ergebnis der Aggregatfunktion filtern zu können, müssen wir den Ausdruck <strong>HAVING</strong> nach dem <strong>GROUP BY</strong> Befehl einsetzen:</p>
+<pre><code>SELECT
+    BillingCity AS Standort,
+    AVG(Total) AS &#39;Durchschnittlicher Rechnungsbetrag&#39;
+FROM
+    invoices
+GROUP BY
+    BillingCity
+HAVING
+    AVG(Total) &gt; 6;</code></pre>
+<center>
+<img src="img-FUNC6.png" width="1000" />
+</center>
+<p><br></p>
+<p>Wir können festhalten, dass <strong>WHERE</strong> als Filter für direkte Daten aus unseren Tabellen und <strong>HAVING</strong> als Filter für aggregierte Daten genutzt werden kann. Der Befehl <strong>HAVING</strong> führt ohne <strong>GROUP BY</strong> zu einem Error.</p>
+<p>Selbstverständlich können wir beide Befehle auch zusammen verwenden. Beispielsweise um uns alle Städte mit Anfangsbuchstabe F (Werte aus der Tabelle) mit einem Durchschnittsbetrag über 6 (Werte die wir neu berechnen) ausgeben zu lassen. Hierbei ist die Reihenfolge der Befehle <strong>FROM</strong>, <strong>WHERE</strong>, <strong>GROUP BY</strong> und <strong>HAVING</strong> entscheidend:</p>
+<pre><code>SELECT
+    BillingCity AS Standort,
+    AVG(Total) AS &#39;Durchschnittlicher Rechnungsbetrag&#39;
+FROM
+    invoices
+WHERE
+    BillingCity LIKE &#39;B%&#39;
+GROUP BY
+    BillingCity
+HAVING
+    AVG(Total) &gt; 6;</code></pre>
+<center>
+<img src="img-FUNC7.png" width="1000" />
+</center>
+<p><br></p>
+</div>
+<div id="case" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> CASE</h2>
+<p>In manchen Szenarien möchten wir die Fälle in unserer Tabelle aufgrund bestimmter Werte zu neuen Gruppen zuteilen. Beispielsweise um zwischen kleinen, mittleren und großen Bestellungen zu unterscheiden. Durch den Befehl <strong>CASE</strong> können wir diese Zuteilung vornehmen. Der Befehl wird in unserer Auswahl der Variablen im Befehl <strong>SELECT</strong> platziert und definiert die Zuteilung zu einer bestimmten Gruppe je nach Wert einer anderen Variable.</p>
+<p>So wählen wir wie im folgenden Codeblock zunächst die Variablen unserer Tabelle, die wir uns anzeigen lassen möchten und platzieren dann unseren Befehl <strong>CASE</strong>. Ohne die darauf folgenden Zeilen mit einem Komma zu trennen, wie es bei den Variablen der Fall ist, definieren wir dann mit dem Wort <strong>WHEN</strong>, unter welchen Umständen <em>(Total &lt; 2.00)</em> der jeweilige Fall zu einer neuen Kategorie <em>(Kleine Bestellung)</em> hinzugefügt werden soll. Das Wort <strong>ELSE</strong> teilt dann alle Fälle, die den vorherigen <strong>WHEN</strong> Bedingungen nicht entsprechen einer weiteren Kategorie zu. Der CASE Befehl wird dann durch <strong>END AS</strong> mit dem Namen unserer neuen Spalte beendet.</p>
+<pre><code>SELECT
+    InvoiceDate AS Bestelldatum,
+    BillingAddress AS Rechnungsadresse,
+    Total AS Rechnungsbetrag,
+    CASE
+    WHEN Total &lt; 2.00 THEN &#39;Kleine Bestellung&#39;
+    WHEN Total BETWEEN 2.00 AND 7.00 THEN &#39;Mittlere Bestellung&#39;
+    ELSE &#39;Große Bestellung&#39;
+    END AS Bestellungsumfang
+FROM
+    invoices;</code></pre>
+<center>
+<img src="img-FUNC8.png" width="1000" />
+</center>
+<p><br></p>
+<p>Möchten wir anschließend nurnoch die großen Bestellungen betrachten, können wir wieder durch <strong>WHERE</strong> filtern:</p>
+<pre><code>SELECT
+    InvoiceDate AS Bestelldatum,
+    BillingAddress AS Rechnungsadresse,
+    Total AS Rechnungsbetrag,
+    CASE
+    WHEN Total &lt; 2.00 THEN &#39;Kleine Bestellung&#39;
+    WHEN Total BETWEEN 2.00 AND 7.00 THEN &#39;Mittlere Bestellung&#39;
+    ELSE &#39;Große Bestellung&#39;
+    END AS Bestellungsumfang
+FROM
+    invoices
+WHERE
+    Bestellungsumfang = &#39;Große Bestellung&#39;;</code></pre>
+<center>
+<img src="img-FUNC9.png" width="1000" />
+</center>
+<p><br></p>
+
+</div>
+</div>
+<div id="erstellung-von-datenbanken" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Erstellung von Datenbanken</h1>
+<p>Die letzten Grundlagen, mit denen man sich beschäftigen sollte, bevor man sich mit komplexeren Abfragen und Funktionen auseinandersetzt, umfassen das Erstellen von Datenbanken und Tabellen.</p>
+<p>Die Datenbankerstellung im DB Browser for SQLite ist etwas anders, als bei der Nutzung gängiger Datenbanksysteme, weshalb das folgende Beispiel im DB Browser nicht anwendbar ist.</p>
+<p>In gängigen Datenbanksystemen lässt sich eine neue Datenbank einfach über den Befehl <strong>CREATE DATABASE</strong> in Kombination mit dem Namen der neuen Datenbank erstellen:</p>
+<pre><code>CREATE DATABASE datenbankname;</code></pre>
+<p>Anschließend lässt sich eine neue Tabelle in der Datenbank über den Befehl <strong>CREATE TABLE</strong> erstellen. Dabei müssen für jede Spalte, die wir erstellen wollen, der Spaltenname und der Datentyp der jeweiligen Spalte definiert werden:</p>
+<pre><code>CREATE TABLE Playlistkuratoren (
+  KuratorId INT NOT NULL,
+  Personalnummer INT,
+  Vorname NVARCHAR(40),
+  Nachname NVARCHAR(40),
+  Geburtsdatum DATE,
+  PlaylistAnzahl NUMERIC(4),
+  PRIMARY KEY (KuratorId),
+  FOREIGN KEY (Personalnummer) REFERENCES employees(EmployeeId)
+)
+</code></pre>
+<p>In diesem Beispiel erstellen wir eine neue Tabelle, in der wir Daten über die Kuratoren von Playlisten sammeln.</p>
+<p>In der ersten Spalte soll sich unsere <strong>KuratorId</strong> befinden. Diese ist vom Typ <strong>INT</strong> - also Integer, eine ganze Zahl. Durch <strong>NOT NULL</strong> legen wir fest, dass dieses Feld für keinen Eintrag in der Tabelle leer sein darf, denn mit der ID wollen wir den jeweiligen Eintrag immer identifizieren können.</p>
+<p>Da einige Kuratoren eventuell direkt bei uns angestellt sind, möchten wir zudem eine Spalte für mögliche Personalnummern mit dem Datentyp <strong>INT</strong> anlegen.</p>
+<p>Für Vor- und Nachname nehmen wir den Datentyp <strong>NVARCHAR</strong>. Es kann also ein beliebig langer Text eingegeben werden, der jedoch durch den Zusatz <strong>(40)</strong> auf maximal 40 Zeichen begrenzt ist.</p>
+<p>Für das Geburtsdatum wählen wir den Datentyp <strong>DATE</strong>.</p>
+<p>Durch den <strong>PRIMARY KEY</strong> legen wir nun fest, welche Variable als Primary Key dienen soll und damit jeder Wert der Variable nur einmal vorkommen kann. Zusätzlich legen wir fest, dass unsere Variable <strong>Personalnummer</strong> als <strong>FOREIGN KEY</strong> für die Variable <strong>employeeId</strong> in der Tabelle <em>employees</em> dient.</p>
+<p>Nun ist unsere neue Tabelle erstellt und wir müssen diese nurnoch mit Einträgen befüllen. Dies geschieht mit dem Befehl <strong>INSERT INTO</strong>, bei dem wir die entsprechende Playlist und die zu befüllenden Variablen auswählen und anschließend über <strong>VALUES</strong> die Daten eingeben:</p>
+<pre><code>INSERT INTO Playlistkuratoren (KuratorId, Personalnummer, Vorname, Nachname, Geburtsdatum, PlaylistAnzahl)
+VALUES (2,1,&#39;Andrew&#39;, &#39;Adams&#39;, &#39;1962-02-18&#39;,3);</code></pre>
+<p>Möchten wir nun beispielsweise wissen, wie die Emailadressen von Mitarbeitern sind, die unsere Playlisten zusammenstellen, können wir den folgenden <strong>INNER JOIN</strong> benutzen:</p>
+<pre><code>SELECT
+    p.KuratorId,
+    p.Personalnummer,
+    p.PlaylistAnzahl,
+    e.FirstName,
+    e.LastName,
+    e.Email
+FROM
+    employees AS e
+INNER JOIN
+    Playlistkuratoren AS p
+ON
+    p.Personalnummer = e.EmployeeId;</code></pre>
+<center>
+<img src="img-CREATE1.png" width="1000" />
+</center>
+<p><br>
+Logischerweise sehen wir, dass es nur den einen, neu hinzugefügten Mitarbeiter gibt, der als Playlistkurator tätig ist.</p>
+
+</div>
+<div id="weitere-ressourcen" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Weitere Ressourcen</h1>
+<p>Dieses Tutorial hat nur einen kleinen Einblick in die Funktionsweisen und Möglichkeiten von SQL gegeben. Hier sind weitere nützliche Ressourcen für die Arbeit mit SQL zu finden:</p>
+<p>Hilfestellungen / Dokumentationen:</p>
+<ul>
+<li><p><a href="https://www.tutorialspoint.com/sqlite/sqlite_data_types.htm">Eine Übersicht zu weiteren Datentypen: SQL Datatypes</a></p></li>
+<li><p><a href="https://github.com/sqlitebrowser/sqlitebrowser/wiki">DB Browser for SQLite - Dokumentation</a></p></li>
+<li><p><a href="https://www.sqltutorial.org/sql-cheat-sheet/">SQL Cheat Sheet</a></p></li>
+</ul>
+<p><br>
+Umfangreicheres Tutorial:</p>
+<ul>
+<li><a href="https://youtu.be/HXV3zeQKqGY">freeCodeCamp - SQL Tutorial für Anfänger (ca. 4 Std.)</a></li>
+</ul>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"toc_float": {
+"collapsed": false
+},
+"toc_depth": 3
+});
+});
+</script>
+
+</body>
+
+</html>
